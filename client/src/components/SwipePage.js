@@ -2,15 +2,27 @@ import React from "react";
 import Profile from "./Profile";
 import { useEffect, useState } from "react";
 
-function SwipePage({ profiles, setProfiles, user }){
+function SwipePage({ profiles, handleDeleteUser, setProfiles, setUser, user }){
 
     let filteredProfiles = profiles.filter((p) => p.id !== user.id )
 
-    let currentProfile = filteredProfiles.filter((p) => p.likes.user_id != user.id)
+    useEffect(() => {
+        fetch("/me").then((response) => {
+          if (response.ok) {
+            response.json().then((user) => setUser(user));
+          }
+        });
+      }, []);
+
+    let userLikes = []
+    let userDislikes = []
+    let x = user.likes
+    x.forEach(y => y.disliked_person_id ? userDislikes.push(y.disliked_person_id) : null)
+    x.forEach(y => y.liked_person_id ? userLikes.push(y.liked_person_id) : null)
+    const removeIds = [...userLikes, ...userDislikes]
     
-    console.log("userID", user.id)
-    console.log("user Likes", user.likes)
-    console.log("currentProfile", currentProfile)
+    let currentProfile = filteredProfiles.filter((p) => !removeIds.includes(p.id))
+    
 
     useEffect(() => {
         fetch("/users")
@@ -24,7 +36,7 @@ function SwipePage({ profiles, setProfiles, user }){
                 Welcome to the Swipe Page
             </h1>
             <div >
-                <Profile currentProfile={currentProfile} user={user} profiles={profiles} setProfiles={setProfiles}/>
+                <Profile currentProfile={currentProfile} user={user} profiles={profiles} handleDeleteUser={handleDeleteUser} setProfiles={setProfiles}/>
             </div>
         </div>
     )

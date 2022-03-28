@@ -30,6 +30,11 @@ function App() {
       .then((r) => r.json())
       .then((user) => (user.username ? setUser(user) : null));
   }
+
+  function handleDeleteUser(id){
+    const updatedUsers =profiles.filter(p=>p.id!==id)
+    setProfiles(updatedUsers)
+  }
   
 const welcome = (user ? `Welcome ${user.name}` : "Login to Start Swiping")
 
@@ -46,7 +51,7 @@ const welcome = (user ? `Welcome ${user.name}` : "Login to Start Swiping")
 
       <Switch>
       <Route exact path="/">
-      {user ? <SwipePage profiles={profiles} setProfiles={setProfiles} user={user}/> : null}
+      {user ? <SwipePage setUser={setUser} handleDeleteUser={handleDeleteUser} profiles={profiles} setProfiles={setProfiles} user={user}/> : null}
       </Route>
       <Route exact path="/matches">
       <Matches />
