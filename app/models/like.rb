@@ -3,11 +3,12 @@ class Like < ApplicationRecord
   has_one :match
 
   def match_check
-    likedID = self.liked_person_id 
-    user = Like.where(user_id: likedID).take
-      if user.liked_person_id === self.user_id
+    liked_person = self.liked_person_id 
+    matched_like = Like.where(user_id: liked_person, liked_person_id: self.user_id)
+    if matched_like
           Match.create(like_id: self.id)
-        else return nil
+          puts "match created"
+        else return "this is not a match"
     end
   end
 

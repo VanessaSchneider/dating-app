@@ -11,10 +11,12 @@ class LikesController < ApplicationController
     end
 
     def like_profile
-        like = Like.create!(user_id: params[:user_id], liked_person_id: params[:liked_person_id])
+        like = Like.create!(like_params)
         like.match_check
         render json: like, status: :ok
     end
+    # user_id: params[:user_id], liked_person_id: params[:liked_person_id]
+
 
     def disliked_profile
         like = Like.create!(params[:like_params])
