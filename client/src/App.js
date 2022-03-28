@@ -19,6 +19,8 @@ function App() {
     });
   }, []);
 
+
+
   function login (username, password){
     fetch("/login", {
       method: "POST",
@@ -54,7 +56,7 @@ const welcome = (user ? `Welcome ${user.name}` : "Login to Start Swiping")
       {user ? <SwipePage setUser={setUser} handleDeleteUser={handleDeleteUser} profiles={profiles} setProfiles={setProfiles} user={user}/> : null}
       </Route>
       <Route exact path="/matches">
-      <Matches />
+      <Matches user={user} setUser={setUser}/>
       </Route>
       </Switch>
     </div>
