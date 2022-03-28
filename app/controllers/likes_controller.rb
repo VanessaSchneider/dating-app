@@ -19,7 +19,7 @@ class LikesController < ApplicationController
 
 
     def disliked_profile
-        like = Like.create!(params[:like_params])
+        like = Like.create!(like_params)
         render json: like, status: :ok
     end
 

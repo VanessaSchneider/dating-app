@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 
-function Profile( { currentProfile, user }){
+function Profile( { currentProfile, user, profiles, setProfiles }){
 
     let randomProfile = currentProfile[Math.floor(Math.random() * currentProfile.length)];
 
@@ -17,17 +17,38 @@ function Profile( { currentProfile, user }){
               headers: {
                 "Content-Type": "application/json",
               },
-              body: JSON.stringify({ ui, rpid }),
+              body: JSON.stringify( 
+                  {
+                      "user_id": ui, 
+                      "liked_person_id": rpid 
+                }),
             })
               .then((r) => r.json())
               .then((data)=>console.log(data))
             //  TODO "fetch matches? skip to next profile"
     }
 
-    function dislikeProfile(){
+    function dislikeProfile(rp){
         console.log("dislike!")
+        let ui = user.id
+        let rpid = rp.id
+       
+            fetch("/dislikedProfile", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify( 
+                  {
+                      "user_id": ui, 
+                      "disliked_person_id": rpid 
+                }),
+            })
+              .then((r) => r.json())
+              .then((data)=>console.log(data))
 
-        // "/dislikedProfile"
+
+        
     }
    
     // TODO add BIO and rest of attr section after Age. 
@@ -42,7 +63,7 @@ function Profile( { currentProfile, user }){
             
             : null}</h2>
             <button onClick={()=>likeProfile(randomProfile)}>Like</button>
-            <button onClick={()=>dislikeProfile()}>Dislike</button>
+            <button onClick={()=>dislikeProfile(randomProfile)}>Dislike</button>
         </div>
     )
 }
