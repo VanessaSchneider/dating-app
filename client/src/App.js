@@ -31,9 +31,6 @@ function App() {
       .then((user) => (user.username ? setUser(user) : null));
   }
   
-
-
-
 const welcome = (user ? `Welcome ${user.name}` : "Login to Start Swiping")
 
   return (

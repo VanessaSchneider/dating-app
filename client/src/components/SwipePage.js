@@ -4,8 +4,7 @@ import { useEffect, useState } from "react";
 
 function SwipePage({ profiles, setProfiles, user }){
 
-    const currentProfile = profiles
-    // .filter((p) => p.id !== user.id )
+    const currentProfile = profiles.filter((p) => p.id !== user.id )
 
     useEffect(() => {
         fetch("/users")
@@ -24,7 +23,7 @@ function SwipePage({ profiles, setProfiles, user }){
                 Welcome to the Swipe Page
             </h1>
             <div >
-                <Profile currentProfile={currentProfile}/>
+                <Profile currentProfile={currentProfile} user={user}/>
             </div>
         </div>
     )
