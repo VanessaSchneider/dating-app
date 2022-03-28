@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 
 function SwipePage({ profiles, setProfiles, user }){
 
-    const currentProfile = profiles.filter((p) => p.id !== user.id )
+    const currentProfile = profiles
+    // .filter((p) => p.id !== user.id )
 
     useEffect(() => {
         fetch("/users")

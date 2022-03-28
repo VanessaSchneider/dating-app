@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 
-function Signup({ onLogin }) {
+function Signup({ login }) {
 
   const [signup, setSignup] = useState(false)
 
@@ -33,7 +33,7 @@ function Signup({ onLogin }) {
         }),
       })
         .then((r) => r.json())
-        .then(onLogin);
+        .then(login(username, password));
     }
 
     const signupBox = (

@@ -19,6 +19,18 @@ function App() {
     });
   }, []);
 
+  function login (username, password){
+    fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    })
+      .then((r) => r.json())
+      .then((user) => (user.username ? setUser(user) : null));
+  }
+  
 
 
 
@@ -28,7 +40,7 @@ const welcome = (user ? `Welcome ${user.name}` : "Login to Start Swiping")
     
     <div className="App">
       <NavBar user={user}/>
-      {user ? null : <Signup onLogin={setUser}/> }
+      {user ? null : <Signup onLogin={setUser} login={login} /> }
       <nav className="nav-container">
         {user ? <Logout onLogout={setUser}/> : <Login onLogin={setUser}/> }
        </nav> 
