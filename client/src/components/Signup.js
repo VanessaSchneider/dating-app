@@ -4,7 +4,6 @@ import { useState } from 'react';
 function Signup({ login }) {
 
   const [signup, setSignup] = useState(false)
-
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -33,7 +32,7 @@ function Signup({ login }) {
         }),
       })
         .then((r) => r.json())
-        .then(login(username, password));
+        setSignup(false);
     }
 
     const signupBox = (

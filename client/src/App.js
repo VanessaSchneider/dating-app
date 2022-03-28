@@ -10,7 +10,14 @@ import { Route, Switch } from "react-router-dom";
 function App() {
   const [user, setUser] = useState(null);
   const [profiles, setProfiles] = useState([]);
+  const [matches, setMatches] = useState([])
   
+    useEffect(() => {
+      fetch("/matches")
+  .then((res) => res.json())
+  .then((data) => setMatches(data))}, 
+  [])
+
   useEffect(() => {
     fetch("/me").then((response) => {
       if (response.ok) {
@@ -18,8 +25,6 @@ function App() {
       }
     });
   }, []);
-
-
 
   function login (username, password){
     fetch("/login", {
@@ -30,7 +35,7 @@ function App() {
       body: JSON.stringify({ username, password }),
     })
       .then((r) => r.json())
-      .then((user) => (user.username ? setUser(user) : null));
+      .then((data) => (user.username ? setUser(data) : null));
   }
 
   function handleDeleteUser(id){
@@ -56,7 +61,7 @@ const welcome = (user ? `Welcome ${user.name}` : "Login to Start Swiping")
       {user ? <SwipePage setUser={setUser} handleDeleteUser={handleDeleteUser} profiles={profiles} setProfiles={setProfiles} user={user}/> : null}
       </Route>
       <Route exact path="/matches">
-      <Matches user={user} setUser={setUser}/>
+      <Matches matches={matches} setMatches={setMatches} user={user} setUser={setUser}/>
       </Route>
       </Switch>
     </div>

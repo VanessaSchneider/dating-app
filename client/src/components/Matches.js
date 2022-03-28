@@ -1,24 +1,28 @@
 import { useRouteMatch } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-function Matches({ user, setUser }) {
+function Matches({ user, setUser, matches, setMatches }) {
 
-    useEffect(() => {
-        fetch("/me").then((response) => {
-          if (response.ok) {
-            response.json().then((user) => setUser(user));
-          }
-        });
-      }, []);
+  useEffect(() => {
+    fetch("/me").then((response) => {
+      if (response.ok) {
+        response.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
 
+  let match_display = []
+  let numberOfMatches = null
 
+  if (matches && user){
+    match_display = (matches ? matches.filter((m) => m.like.liked_person_id === user.id) : null)
+    numberOfMatches = user.matches.length + match_display.length
+  }
 
-    //   if matches.like has my id
-  
     return(
         <div>
             <h2>This is your Matches Page</h2>
-            {user && user.matches.length > 0 ? <p>You have matches</p> : null}
+            {user && numberOfMatches > 0 ? <p>You have {numberOfMatches} match(es). Subscribe to premium to view matches.</p> : null}
         </div>
     )
 }
