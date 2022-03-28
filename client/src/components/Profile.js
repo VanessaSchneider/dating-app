@@ -9,15 +9,15 @@ function Profile( { currentProfile, user }){
     // 
 
     function likeProfile(rp){
-        let likeData = {
-            liked_person_id: rp.id, user_id: user.id
-        }
+        let ui = user.id
+        let rpid = rp.id
+       
             fetch("/likeProfile", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
               },
-              body: JSON.stringify(likeData),
+              body: JSON.stringify({ ui, rpid }),
             })
               .then((r) => r.json())
               .then((data)=>console.log(data))
