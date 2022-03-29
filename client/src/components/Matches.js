@@ -20,14 +20,15 @@ function Matches({ user, setUser, matches, setMatches, profiles, setProfiles }) 
 
   let matchCards = []
   
-  if (matches.length !== 0){
+  if (matches.length !== 0 && user){
   matchCards = matches.map((m) => <MatchCard setMatches={setMatches} matches={matches} user={user} profiles={profiles} key={m.id} match={m}/>)
   }
+ 
 
     return(
         <div >
             <h2>This is your Matches Page</h2>
-            {user && matches.length > 0 ? <p>You have {matches.length} match(es). Subscribe to premium to view matches.</p> : <p>No matches yet!</p>}
+            {user && matches.length > 0 ? <p>You have {matches.length} match(es). Subscribe to premium to view matches.</p> : null}
             {matchCards}
         </div>
     )

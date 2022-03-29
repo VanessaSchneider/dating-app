@@ -1,7 +1,13 @@
 
-import { NavLink } from "react-router-dom";
+// import { NavLink, useHistory } from "react-router-dom";
 
-function Logout ({onLogout}){
+function Logout ({ onLogout }){
+// const history = useHistory();
+
+// const handleRedirect = () => {
+//   history.push("/")
+// }
+
 
 function handleLogout() {
     fetch("/logout", {
@@ -11,12 +17,7 @@ function handleLogout() {
 
 return(
     <header>
-      <NavLink
-         to="/"
-         exact
-        >
       <button onClick={handleLogout}>Logout</button>
-      </NavLink>
     </header>
 
 )}

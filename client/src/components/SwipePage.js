@@ -4,19 +4,36 @@ import { useEffect, useState } from "react";
 
 function SwipePage({ profiles, handleDeleteUser, setProfiles, setUser, user }){
 
-    let filteredProfiles = []
-
-    if(profiles.length !== 0){
-    filteredProfiles = profiles.filter((p) => p.id !== user.id )
-    }
+  // useEffect(() => {
+  //       fetch("/users")
+  //   .then((res) => res.json())
+  //   .then((data) => setProfiles(data))}, 
+  //   [])
 
     useEffect(() => {
-        fetch("/me").then((response) => {
-          if (response.ok) {
-            response.json().then((user) => setUser(user));
-          }
-        });
-      }, []);
+      fetch("/me").then((response) => {
+        if (response.ok) {
+          response.json().then((user) => setUser(user));
+        }
+      });
+    }, []);
+
+    // useEffect(() => {
+    //   setTimeout(() => {
+        
+    //  }, 1000);
+    // }, [profiles])
+    
+
+    // useEffect(() => {
+    //   setTimeout(() => {
+    //      Function 
+    //   }, 1000);
+    // }, [profiles]);
+  
+
+    let filteredProfiles = []
+    filteredProfiles = profiles&&profiles.filter((p) => p.id !== user.id )
 
     let userLikes = []
     let userDislikes = []
