@@ -1,3 +1,6 @@
+
+import { NavLink } from "react-router-dom";
+
 function Logout ({onLogout}){
 
 function handleLogout() {
@@ -8,7 +11,12 @@ function handleLogout() {
 
 return(
     <header>
+      <NavLink
+         to="/"
+         exact
+        >
       <button onClick={handleLogout}>Logout</button>
+      </NavLink>
     </header>
 
 )}

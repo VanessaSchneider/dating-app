@@ -12,10 +12,11 @@ function App() {
   const [profiles, setProfiles] = useState([]);
   const [matches, setMatches] = useState([])
   
-    useEffect(() => {
-      fetch("/matches")
+  
+  useEffect(() => {
+    fetch("/users")
   .then((res) => res.json())
-  .then((data) => setMatches(data))}, 
+  .then((data) => setProfiles(data))}, 
   [])
 
   useEffect(() => {
@@ -25,6 +26,14 @@ function App() {
       }
     });
   }, []);
+
+    useEffect(() => {
+      fetch("/getMatches")
+  .then((res) => res.json())
+  .then((data) => setMatches(data))}, 
+  [])
+
+    
 
   function login (username, password){
     fetch("/login", {
@@ -61,7 +70,7 @@ const welcome = (user ? `Welcome ${user.name}` : "Login to Start Swiping")
       {user ? <SwipePage setUser={setUser} handleDeleteUser={handleDeleteUser} profiles={profiles} setProfiles={setProfiles} user={user}/> : null}
       </Route>
       <Route exact path="/matches">
-      <Matches matches={matches} setMatches={setMatches} user={user} setUser={setUser}/>
+      <Matches matches={matches} setMatches={setMatches} user={user} setUser={setUser} profiles={profiles} setProfiles={setProfiles}/>
       </Route>
       </Switch>
     </div>

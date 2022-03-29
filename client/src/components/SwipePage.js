@@ -4,7 +4,11 @@ import { useEffect, useState } from "react";
 
 function SwipePage({ profiles, handleDeleteUser, setProfiles, setUser, user }){
 
-    let filteredProfiles = profiles.filter((p) => p.id !== user.id )
+    let filteredProfiles = []
+
+    if(profiles.length === 0){
+    filteredProfiles = profiles.filter((p) => p.id !== user.id )
+    }
 
     useEffect(() => {
         fetch("/me").then((response) => {
@@ -24,11 +28,11 @@ function SwipePage({ profiles, handleDeleteUser, setProfiles, setUser, user }){
     let currentProfile = filteredProfiles.filter((p) => !removeIds.includes(p.id))
     
 
-    useEffect(() => {
-        fetch("/users")
-    .then((res) => res.json())
-    .then((data) => setProfiles(data))}, 
-    [])
+    // useEffect(() => {
+    //     fetch("/users")
+    // .then((res) => res.json())
+    // .then((data) => setProfiles(data))}, 
+    // [])
 
     return(
         <div>

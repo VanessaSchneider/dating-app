@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   post "/likeProfile", to: "likes#like_profile"
   post "/dislikedProfile", to: "likes#disliked_profile"
 
+  get "/getMatches", to: "matches#get_matches"
+
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }

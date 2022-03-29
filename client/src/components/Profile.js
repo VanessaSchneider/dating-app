@@ -55,6 +55,7 @@ function Profile( { currentProfile, user, profiles, setProfiles, handleDeleteUse
             <div>
             <p>{randomProfile.name}</p>
             <p>{randomProfile.age}</p>
+            <img width="200px" src={randomProfile.photo}></img>
             </div>
             : null}
             </h2>

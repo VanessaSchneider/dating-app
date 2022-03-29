@@ -1,5 +1,5 @@
 
-import { NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
 function NavBar ({ user }){
@@ -11,13 +11,13 @@ function NavBar ({ user }){
          to="/"
          exact
         >
-            Home Page
+            <button>Home Page</button>
         </NavLink>
         <NavLink
         to="/matches" 
         exact
         >
-            Matches
+            <button>Matches</button>
         </NavLink>
         </div> : null }
         </div>

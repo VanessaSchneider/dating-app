@@ -1,7 +1,8 @@
 import { useRouteMatch } from "react-router-dom";
 import { useEffect, useState } from "react";
+import MatchCard from "./MatchCard";
 
-function Matches({ user, setUser, matches, setMatches }) {
+function Matches({ user, setUser, matches, setMatches, profiles, setProfiles }) {
 
   useEffect(() => {
     fetch("/me").then((response) => {
@@ -11,18 +12,23 @@ function Matches({ user, setUser, matches, setMatches }) {
     });
   }, []);
 
-  let match_display = []
-  let numberOfMatches = null
+  useEffect(() => {
+    fetch("/getMatches")
+.then((res) => res.json())
+.then((data) => setMatches(data))}, 
+[])
 
-  if (matches && user){
-    match_display = (matches ? matches.filter((m) => m.like.liked_person_id === user.id) : null)
-    numberOfMatches = user.matches.length + match_display.length
+  let matchCards = []
+  
+  if (matches.length != 0){
+  matchCards = matches.map((m) => <MatchCard setMatches={setMatches} matches={matches} user={user} profiles={profiles} key={m.id} match={m}/>)
   }
 
     return(
-        <div>
+        <div >
             <h2>This is your Matches Page</h2>
-            {user && numberOfMatches > 0 ? <p>You have {numberOfMatches} match(es). Subscribe to premium to view matches.</p> : null}
+            {user && matches.length > 0 ? <p>You have {matches.length} match(es). Subscribe to premium to view matches.</p> : <p>No matches yet!</p>}
+            {matchCards}
         </div>
     )
 }
