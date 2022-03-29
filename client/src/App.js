@@ -12,26 +12,25 @@ function App() {
   const [profiles, setProfiles] = useState([]);
   const [matches, setMatches] = useState([])
   
-  
+  useEffect(() => {
+    fetch("/me").then((response) => {
+      if (response.ok) {
+        response.json().then((data) => setUser(data));
+      }
+    });
+  }, []);
+
   useEffect(() => {
     fetch("/users")
   .then((res) => res.json())
   .then((data) => setProfiles(data))}, 
-  [])
-
-  useEffect(() => {
-    fetch("/me").then((response) => {
-      if (response.ok) {
-        response.json().then((user) => setUser(user));
-      }
-    });
-  }, []);
+  [user])
 
     useEffect(() => {
       fetch("/getMatches")
   .then((res) => res.json())
   .then((data) => setMatches(data))}, 
-  [])
+  [user])
 
     
 

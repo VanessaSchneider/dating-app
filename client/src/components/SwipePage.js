@@ -6,7 +6,7 @@ function SwipePage({ profiles, handleDeleteUser, setProfiles, setUser, user }){
 
     let filteredProfiles = []
 
-    if(profiles.length === 0){
+    if(profiles.length !== 0){
     filteredProfiles = profiles.filter((p) => p.id !== user.id )
     }
 

@@ -20,7 +20,7 @@ function Matches({ user, setUser, matches, setMatches, profiles, setProfiles }) 
 
   let matchCards = []
   
-  if (matches.length != 0){
+  if (matches.length !== 0){
   matchCards = matches.map((m) => <MatchCard setMatches={setMatches} matches={matches} user={user} profiles={profiles} key={m.id} match={m}/>)
   }
 
