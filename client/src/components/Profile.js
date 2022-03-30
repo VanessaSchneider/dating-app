@@ -59,7 +59,7 @@ function Profile( { currentProfile, user, profiles, setProfiles, handleDeleteUse
             </div>
             : null}
             </h2>
-            {noMoreProfiles.length === 0 ? null : <div>
+            {currentProfile.length === 0 ? null : <div>
             <button onClick={()=>likeProfile(randomProfile)}>Like</button>
             <button onClick={()=>dislikeProfile(randomProfile)}>Dislike</button>
             </div>}

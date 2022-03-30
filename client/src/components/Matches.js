@@ -28,7 +28,7 @@ function Matches({ user, setUser, matches, setMatches, profiles, setProfiles }) 
     return(
         <div >
             <h2>This is your Matches Page</h2>
-            {user && matches.length > 0 ? <p>You have {matches.length} match(es). Subscribe to premium to view matches.</p> : null}
+            {user && matches ? <h3>You have {matches.length} match(es).</h3> : null}
             {matchCards}
         </div>
     )
