@@ -2,7 +2,7 @@
 import { NavLink } from "react-router-dom";
 
 
-function NavBar ({ user }){
+function NavBar ({ user, matches }){
 
     return (
         <div id="nav">
@@ -17,7 +17,7 @@ function NavBar ({ user }){
         to="/matches" 
         exact
         >
-            <button>Matches</button>
+            <button>Matches ({matches.length})</button>
         </NavLink>
         <NavLink
             to="/myProfile"

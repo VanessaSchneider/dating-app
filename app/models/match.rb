@@ -1,11 +1,6 @@
 class Match < ApplicationRecord
   belongs_to :like
 
-  def get_match_data
-    puts self
-    byebug
-  end
-
 end
 
 #do fetch

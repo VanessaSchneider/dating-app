@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 
-function Profile( { currentProfile, user, profiles, setProfiles, handleDeleteUser }){
+function Profile( { currentProfile, user, profiles, setProfiles, handleDeleteUser, getMatches }){
 
     let randomProfile = currentProfile[Math.floor(Math.random() * currentProfile.length)];
 
@@ -24,7 +24,7 @@ function Profile( { currentProfile, user, profiles, setProfiles, handleDeleteUse
                 }),
             })
               .then((r) => r.json())
-              .then((data)=>console.log(data))
+              .then(() => getMatches())
             //  TODO "fetch matches? skip to next profile"
     }
 

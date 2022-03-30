@@ -2,7 +2,7 @@ import React from "react";
 import Profile from "./Profile";
 import { useEffect, useState } from "react";
 
-function SwipePage({ profiles, handleDeleteUser, setProfiles, setUser, user }){
+function SwipePage({ profiles, handleDeleteUser, setProfiles, setUser, user, getMatches, setMatches }){
 
   // useEffect(() => {
   //       fetch("/users")
@@ -57,7 +57,7 @@ function SwipePage({ profiles, handleDeleteUser, setProfiles, setUser, user }){
                 Welcome to the Swipe Page
             </h1>
             <div >
-                <Profile currentProfile={currentProfile} user={user} profiles={profiles} handleDeleteUser={handleDeleteUser} setProfiles={setProfiles}/>
+                <Profile getMatches={getMatches} currentProfile={currentProfile} user={user} profiles={profiles} handleDeleteUser={handleDeleteUser} setProfiles={setProfiles}/>
             </div>
         </div>
     )

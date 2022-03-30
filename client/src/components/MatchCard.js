@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 function MatchCard({ user, match, profiles, setMatches, matches, setProfiles }){
+    const [unmatchButton, setUnmatchButton] = useState(true)
 
     useEffect(() => {
         fetch("/users")
@@ -20,11 +21,14 @@ function MatchCard({ user, match, profiles, setMatches, matches, setProfiles }){
     //Extracts the first (and only) element from the array returned by myMatchArray
     const myMatch = myMatchArray&&myMatchArray[0]
     
-    console.log("user", user.id)
-    console.log("match", match)
-    console.log("filteredProf", filteredProfiles)
-    console.log("myMatchArray", myMatchArray)
-    console.log("myMatch", myMatch)
+    function handleUnmatch(){
+            fetch(`/matches/${match.id}`, {
+              method: "DELETE",
+            }).then(() => setUnmatchButton(true))
+            .then(() =>{
+                const newMatchList = matches.filter((m) => m.id !== match.id)
+                 setMatches(newMatchList)})
+    }
 
     return(
         <div id="match_card">
@@ -33,6 +37,8 @@ function MatchCard({ user, match, profiles, setMatches, matches, setProfiles }){
             <h3>You matched with: {myMatch.name}!</h3>
             <h3>Age: {myMatch.age}</h3>
             <img id="profile_photo" width="200px" src={myMatch.photo}></img>
+            {unmatchButton ? <button onClick={() => setUnmatchButton(false)}>Unmatch</button> : null}
+            {unmatchButton ? null : <button onClick={() => handleUnmatch()}>Confirm Unmatch?</button>}
             </div> : null
             }
         </div>

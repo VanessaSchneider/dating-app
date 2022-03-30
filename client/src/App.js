@@ -28,17 +28,24 @@ function App() {
     });
   }, []);
 
-  useEffect(() => {
-    fetch("/users")
-  .then((res) => res.json())
-  .then((data) => setProfiles(data))}, 
-  [])
+    useEffect(() => {
+      fetch("/users")
+    .then((res) => res.json())
+    .then((data) => setProfiles(data))}, 
+    [user])
 
-  //   useEffect(() => {
-  //     fetch("/getMatches")
-  // .then((res) => res.json())
-  // .then((data) => setMatches(data))}, 
-  // [])
+      useEffect(() => {
+        fetch("/getMatches")
+    .then((res) => res.json())
+    .then((data) => setMatches(data))}, 
+    [user])
+    
+
+    function getMatches (){
+      fetch("/getMatches")
+    .then((res) => res.json())
+    .then((data) => setMatches(data))
+    }
 
   function login (username, password){
     fetch("/login", {
@@ -49,7 +56,7 @@ function App() {
       body: JSON.stringify({ username, password }),
     })
       .then((r) => r.json())
-      .then((data) => (user.username ? setUser(data) : null));
+      .then((data) => (user.username ? setUser(data) : null))
   }
 
   function handleDeleteUser(id){
@@ -71,15 +78,12 @@ function App() {
     .then(()=>handleReroute())
   }
 
-
-
-  
 const welcome = (user ? `Welcome ${user.name}` : "Login to Start Swiping")
 
   return (
     
     <div className="App">
-      <NavBar user={user}/>
+      <NavBar matches={matches} user={user}/>
       {user ? null : <Signup onLogin={setUser} login={login} /> }
       <nav className="nav-container">
       {user ? <Logout handleLogout={handleLogout}/> : <Login onLogin={setUser}/> }
@@ -87,7 +91,7 @@ const welcome = (user ? `Welcome ${user.name}` : "Login to Start Swiping")
       <Switch>
       <Route exact path="/">
       <h1>{welcome}</h1>
-      {(user && profiles) ? <SwipePage setUser={setUser} handleDeleteUser={handleDeleteUser} profiles={profiles} setProfiles={setProfiles} user={user}/> : null}
+      {(user && profiles) ? <SwipePage getMatches={getMatches} setMatches={setMatches} setUser={setUser} handleDeleteUser={handleDeleteUser} profiles={profiles} setProfiles={setProfiles} user={user}/> : null}
       </Route>
       <Route exact path="/matches">
       <Matches matches={matches} setMatches={setMatches} user={user} setUser={setUser} profiles={profiles} setProfiles={setProfiles}/>
