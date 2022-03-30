@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2022_03_24_214238) do
     t.string "photo"
     t.string "location"
     t.integer "age"
+    t.string "bio"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -18,8 +18,12 @@ function Login ({ onLogin, fetchProfiles }){
           body: JSON.stringify({ username, password }),
         })
           .then((r) => r.json())
-          .then((user) => (user.username ? onLogin(user) : null));
-      }
+          .then((user) => (user.username ? onLogin(user) : alert(user.error)))
+        }
+        
+    
+
+    //   
     
     const loginBox = (
         <div>

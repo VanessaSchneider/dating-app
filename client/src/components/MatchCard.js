@@ -27,7 +27,9 @@ function MatchCard({ user, match, profiles, setMatches, matches, setProfiles }){
             }).then(() => setUnmatchButton(true))
             .then(() =>{
                 const newMatchList = matches.filter((m) => m.id !== match.id)
-                 setMatches(newMatchList)})
+                 setMatches(newMatchList)
+                    alert("Unmatch successful!")
+                })
     }
 
     return(

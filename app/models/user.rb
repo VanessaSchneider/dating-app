@@ -6,6 +6,9 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
   validates :name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
+  validates :age, presence: true, numericality: {greater_than_or_equal_to: 18}
+  validates :location, presence: true
+  validates :photo, presence: true
 
   def dependent_match_destroy
     like = Like.all

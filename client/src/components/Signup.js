@@ -12,6 +12,7 @@ function Signup({ login }) {
   const [email, setEmail] = useState("")
   const [location, setLocation] = useState("")
   const [photo, setPhoto] = useState("")
+  const [bio, setBio] = useState("")
 
   function handleSignup(e){
     e.preventDefault();
@@ -28,11 +29,22 @@ function Signup({ login }) {
           age,
           email,
           location,
-          photo
+          photo,
+          bio
         }),
       })
         .then((r) => r.json())
+        .then((data)=> {
+          if (data.errors)
+          {
+            data.errors.forEach(e => e === "Age must be greater than or equal to 18" ? alert("Must be 18 or older") : alert(e))
+          }
+          else{
         setSignup(false);
+        alert("Profile Successfully Created! Please Log In.")
+          }
+        }
+        )
     }
 
     const signupBox = (
@@ -46,6 +58,7 @@ function Signup({ login }) {
               <input type ="text"  value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email"/>
               <input type ="text"  value={location} onChange={(e) => setLocation(e.target.value)} placeholder="location"/>
               <input type ="text"  value={photo} onChange={(e) => setPhoto(e.target.value)} placeholder="photo"/>
+              <input type ="text"  value={bio} onChange={(e) => setBio(e.target.value)} placeholder="bio"/>
               <input type = "submit"></input>
           </form>
       </div>

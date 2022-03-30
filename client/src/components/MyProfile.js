@@ -14,6 +14,7 @@ function MyProfile({ user, handleDeleteProfile, setUser }){
       function deleteProfileHandler(){
         setDeleteButton(true)
         handleDeleteProfile()
+        alert("Profile has been Deleted")
       }
     
 
@@ -26,6 +27,7 @@ function MyProfile({ user, handleDeleteProfile, setUser }){
             <h3>Age: {user.age}</h3>
             <h3>Location: {user.location}</h3>
             <h3>Email: {user.email}</h3>
+            <h3>Bio: {user.bio}</h3>
             <img width="200px" src={user.photo}/>
             { deleteButton ? null : <button onClick={()=>deleteProfileHandler()}> Confirm Delete Profile? </button>}
             { deleteButton? <button onClick={()=>setDeleteButton(false)}>Delete Profile</button> : null }
