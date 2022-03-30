@@ -19,6 +19,11 @@ function NavBar ({ user }){
         >
             <button>Matches</button>
         </NavLink>
+        <NavLink
+            to="/myProfile"
+            exact>
+                <button>My Profile</button>
+            </NavLink>
         </div> : null }
         </div>
     )

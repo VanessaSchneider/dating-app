@@ -1,17 +1,21 @@
 import { useState, useEffect } from 'react';
 
-function MatchCard({ user, match, profiles, setMatches, matches }){
+function MatchCard({ user, match, profiles, setMatches, matches, setProfiles }){
 
-    
+    useEffect(() => {
+        fetch("/users")
+      .then((res) => res.json())
+      .then((data) => setProfiles(data))}, 
+      [])
 
     let filteredProfiles = []
 
     if (user){
-        filteredProfiles = profiles.filter((p) => p.id !== user.id )
+        filteredProfiles = profiles&&profiles.filter((p) => p.id !== user.id )
     }
 
-    const myMatchArray = filteredProfiles.filter((p) => p.id===match.like.user_id || p.id===match.like.liked_person_id)
-    const myMatch = myMatchArray[0]
+    const myMatchArray = filteredProfiles&&filteredProfiles.filter((p) => p.id===match.like.user_id || p.id===match.like.liked_person_id)
+    const myMatch = myMatchArray&&myMatchArray[0]
     
 
 

@@ -1,4 +1,5 @@
 import Login from './components/Login.js'
+import MyProfile from './components/MyProfile.js';
 import { useState, useEffect } from 'react';
 import Signup from './components/Signup';
 import Logout from './components/Logout.js';
@@ -50,7 +51,18 @@ function App() {
     setProfiles(updatedUsers)
   }
 
- 
+  function handleLogout() {
+    fetch("/logout", {
+        method: "DELETE",
+        }).then(() => setUser());
+      }
+
+  function handleDeleteProfile() {
+    fetch(`/users/${user.id}`, {
+      method: "DELETE",
+    }).then(() => console.log("Profile Deleted"))
+      // .then(() => handleLogout())
+  }
   
 const welcome = (user ? `Welcome ${user.name}` : "Login to Start Swiping")
 
@@ -65,13 +77,16 @@ const welcome = (user ? `Welcome ${user.name}` : "Login to Start Swiping")
       <Route exact path="/">
       {user ? null : <Signup onLogin={setUser} login={login} /> }
       <nav className="nav-container">
-        {user ? <Logout onLogout={setUser}/> : <Login onLogin={setUser}/> }
+        {user ? <Logout handleLogout={handleLogout}/> : <Login onLogin={setUser}/> }
        </nav> 
       <h1>{welcome}</h1>
       {(user && profiles) ? <SwipePage setUser={setUser} handleDeleteUser={handleDeleteUser} profiles={profiles} setProfiles={setProfiles} user={user}/> : null}
       </Route>
       <Route exact path="/matches">
       <Matches matches={matches} setMatches={setMatches} user={user} setUser={setUser} profiles={profiles} setProfiles={setProfiles}/>
+      </Route>
+      <Route exact path="/myProfile">
+        <MyProfile user={user} setUser={setUser} handleDeleteProfile={handleDeleteProfile}/>
       </Route>
       </Switch>
     </div>
