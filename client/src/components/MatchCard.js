@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 function MatchCard({ user, match, profiles, setMatches, matches, setProfiles }){
     const [unmatchButton, setUnmatchButton] = useState(true)
+    const [message, setMessage] = useState("")
 
     useEffect(() => {
         fetch("/users")
@@ -28,9 +29,40 @@ function MatchCard({ user, match, profiles, setMatches, matches, setProfiles }){
             .then(() =>{
                 const newMatchList = matches.filter((m) => m.id !== match.id)
                  setMatches(newMatchList)
-                    alert("Unmatch successful!")
+                 alert("You have unmatched") 
                 })
-    }
+            }
+
+            function handleMessage(e){
+                e.preventDefault();
+                fetch("/messages", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        "conversation_id": 1,
+                        "message": message,
+                        "user_id": 1
+                    }),
+                  })
+                    .then((r) => r.json())
+                    .then((data)=> console.log(data)
+                      
+                      
+                    )
+                }
+
+
+                const messageBox = (
+                    <div>
+                        <form onSubmit={handleMessage}>
+                            <input type ="text" value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Type your chat here"/>
+                            <input type = "submit"></input>
+                        </form>
+                    </div>
+                  )
+    
 
     return(
         <div id="match_card">
@@ -43,6 +75,7 @@ function MatchCard({ user, match, profiles, setMatches, matches, setProfiles }){
             {unmatchButton ? null : <button onClick={() => handleUnmatch()}>Confirm Unmatch?</button>}
             </div> : null
             }
+            {messageBox}
         </div>
     )
 }

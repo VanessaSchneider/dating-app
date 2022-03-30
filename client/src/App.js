@@ -79,6 +79,7 @@ function App() {
   }
 
 const welcome = (user ? `Welcome ${user.name}` : "Login to Start Swiping")
+console.log(user)
 
   return (
     

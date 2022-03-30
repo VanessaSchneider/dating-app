@@ -3,4 +3,8 @@ class UserSerializer < ActiveModel::Serializer
 
   has_many :likes
   has_many :matches
+  has_many :chats
+  has_many :conversations
+  has_many :messages
+ 
 end
