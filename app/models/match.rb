@@ -1,5 +1,8 @@
 class Match < ApplicationRecord
   belongs_to :like
+  has_many :chats
+  has_many :conversations, through: :chats
+  has_many :messages, through: :conversations
 
 end
 
