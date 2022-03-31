@@ -1,6 +1,6 @@
 import React from "react";
 import Profile from "./Profile";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 function SwipePage({ profiles, handleDeleteUser, setProfiles, setUser, user, getMatches, setMatches }){
 

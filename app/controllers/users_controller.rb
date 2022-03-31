@@ -40,7 +40,11 @@ class UsersController < ApplicationController
       def update
         user = User.find_by!(id: params[:id])
           user.update(user_params)
+          if user.valid?
           render json: user, status: :ok
+          else 
+          render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+          end
         end
 
     def destroy

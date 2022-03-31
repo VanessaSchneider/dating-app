@@ -85,7 +85,7 @@ function MatchCard({ user, match, profiles, setMatches, matches, setProfiles }){
             <div>
             <h3 className="card-header">You matched with {myMatch.name}!</h3>
             {/* <h3>Age: {myMatch.age}</h3> */}
-            {openMessage ? <img id="profile_photo" width="200px" src={myMatch.photo}></img> : null}
+            {openMessage ? <img alt="" id="profile_photo" width="200px" src={myMatch.photo}></img> : null}
             {/* {match.messages? messageDisplay : <p>Start a conversation!</p>} */}
             {match.messages.length === 0 && openMessage ? <p>No messages yet! Start a conversation!</p> : null}
             <div className='chat'>

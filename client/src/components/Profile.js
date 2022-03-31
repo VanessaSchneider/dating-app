@@ -1,6 +1,3 @@
-
-import { useState } from "react";
-
 function Profile( { currentProfile, user, profiles, setProfiles, handleDeleteUser, getMatches }){
 
     let randomProfile = currentProfile[Math.floor(Math.random() * currentProfile.length)];
@@ -53,8 +50,8 @@ function Profile( { currentProfile, user, profiles, setProfiles, handleDeleteUse
      
       <div className="position-relative m-4">
       <div id="profileCard" className="card" style={{width: "18rem"}}>
-        <img className="card-img-top" src={randomProfile&&randomProfile.photo}></img>
-        <div class="card-body">
+        <img alt="" className="card-img-top" src={randomProfile&&randomProfile.photo}></img>
+        <div className="card-body">
             <h2>{randomProfile ? 
             <div>
             <h4 className="card-title">{randomProfile.name}</h4>

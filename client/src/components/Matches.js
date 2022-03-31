@@ -1,5 +1,4 @@
-import { useRouteMatch } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 import MatchCard from "./MatchCard";
 
 function Matches({ user, setUser, matches, setMatches, profiles, setProfiles }) {
