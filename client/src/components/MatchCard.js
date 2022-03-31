@@ -6,8 +6,6 @@ function MatchCard({ user, match, profiles, setMatches, matches, setProfiles }){
     const [openMessage, setOpenMessage]=useState(false)
     const [messageList, setMessageList]=useState(match.messages)
 
-    console.log(messageList)
-
     useEffect(() => {
         fetch("/users")
       .then((res) => res.json())
