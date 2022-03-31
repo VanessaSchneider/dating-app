@@ -19,6 +19,8 @@ function Login ({ onLogin, fetchProfiles }){
         })
           .then((r) => r.json())
           .then((user) => (user.username ? onLogin(user) : alert(user.error)))
+          setUserName("")
+          setPassword("")
         }
         
     
@@ -30,9 +32,13 @@ function Login ({ onLogin, fetchProfiles }){
             <div>
                 <form onSubmit={handleSubmit}>
                     <div>
+                    <div className="mb-3">
+                    </div>
                          <input type = "text" value={username}  onChange={(e) => setUserName(e.target.value)} placeholder="Username"></input>
+                         <div className="mb-3">
                          <input type = "text" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password"></input>
-                            <input type = "submit"></input>
+                         </div>
+                            <input type = "submit" className="btn btn-outline-light"></input>
                     </div>
                 </form>
              </div>
@@ -45,7 +51,7 @@ function Login ({ onLogin, fetchProfiles }){
     return(
         <div>
             <nav>
-                <button onClick={() => setLogin(!login)}>Login</button>
+                <button type="button" className="btn btn-outline-light" onClick={() => setLogin(!login)}>Login</button>
                 {login ? loginBox : null}
             </nav>
         </div>

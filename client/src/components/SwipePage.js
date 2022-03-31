@@ -25,11 +25,7 @@ function SwipePage({ profiles, handleDeleteUser, setProfiles, setUser, user, get
     // }, [profiles])
     
 
-    // useEffect(() => {
-    //   setTimeout(() => {
-    //      Function 
-    //   }, 1000);
-    // }, [profiles]);
+
   
 
     let filteredProfiles = []
@@ -53,10 +49,10 @@ function SwipePage({ profiles, handleDeleteUser, setProfiles, setUser, user, get
 
     return(
         <div>
-            <h1>
-                Welcome to the Swipe Page
-            </h1>
-            <div >
+            {/* <h2>
+                Like Profiles to Match!
+            </h2> */}
+            <div id="swipe-card">
                 <Profile getMatches={getMatches} currentProfile={currentProfile} user={user} profiles={profiles} handleDeleteUser={handleDeleteUser} setProfiles={setProfiles}/>
             </div>
         </div>

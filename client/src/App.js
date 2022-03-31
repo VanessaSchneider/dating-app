@@ -78,19 +78,24 @@ function App() {
     .then(()=>handleReroute())
   }
 
-const welcome = (user ? `Welcome ${user.name}` : "Login to Start Swiping")
+const welcome = (user ? `Hi ${user.name}! Ready to find love?` : "Login to Start Swiping")
 
   return (
     
     <div className="App">
+      <div className="sidenav" >
+        <div className="sidenav-content">
       <NavBar matches={matches} user={user}/>
       {user ? null : <Signup onLogin={setUser} login={login} /> }
       <nav className="nav-container">
       {user ? <Logout handleLogout={handleLogout}/> : <Login onLogin={setUser}/> }
        </nav> 
+        </div>
+       </div>
+       <div>
       <Switch>
       <Route exact path="/">
-      <h1>{welcome}</h1>
+      <h1 className="welcomeBanner">{welcome}</h1>
       {(user && profiles) ? <SwipePage getMatches={getMatches} setMatches={setMatches} setUser={setUser} handleDeleteUser={handleDeleteUser} profiles={profiles} setProfiles={setProfiles} user={user}/> : null}
       </Route>
       <Route exact path="/matches">
@@ -100,6 +105,7 @@ const welcome = (user ? `Welcome ${user.name}` : "Login to Start Swiping")
         <MyProfile user={user} setUser={setUser} handleDeleteProfile={handleDeleteProfile} />
       </Route>
       </Switch>
+      </div>
     </div>
   );
 }

@@ -11,18 +11,18 @@ function NavBar ({ user, matches }){
          to="/"
          exact
         >
-            <button>Home Page</button>
+            <button type="button" className="btn btn-outline-light">Home Page</button>
         </NavLink>
         <NavLink
         to="/matches" 
         exact
         >
-            <button>Matches ({matches.length})</button>
+            <button type="button" className="btn btn-outline-light">Matches ({matches.length})</button>
         </NavLink>
         <NavLink
             to="/myProfile"
             exact>
-                <button>My Profile</button>
+                <button type="button" className="btn btn-outline-light">My Profile</button>
             </NavLink>
         </div> : null }
         </div>

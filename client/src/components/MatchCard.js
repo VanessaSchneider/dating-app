@@ -57,7 +57,7 @@ function MatchCard({ user, match, profiles, setMatches, matches, setProfiles }){
                     <div>
                         <form onSubmit={(e)=>handleMessage(e)}>
                             <input type ="text" value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Type your chat here"/>
-                            <input type = "submit"></input>
+                            <input type = "submit" className="btn btn-outline-secondary" ></input>
                         </form>
                     </div>
                   )
@@ -65,19 +65,24 @@ function MatchCard({ user, match, profiles, setMatches, matches, setProfiles }){
                   const messageDisplay = messageList.map((m)=> <p key={m.id}>{m.user_id === user.id ? "me" : myMatch&&myMatch.name}: {m.message}</p>)
 
     return(
-        <div id="match_card">
+        
+        <div className="card text-center" style={{width: "50rem"}}>
             {myMatch ?
             <div>
-            <h3>You matched with: {myMatch.name}!</h3>
-            <h3>Age: {myMatch.age}</h3>
-            <img id="profile_photo" width="200px" src={myMatch.photo}></img>
+            <h3 className="card-header">You matched with {myMatch.name}!</h3>
+            {/* <h3>Age: {myMatch.age}</h3> */}
+            {openMessage ? <img id="profile_photo" width="200px" src={myMatch.photo}></img> : null}
             {/* {match.messages? messageDisplay : <p>Start a conversation!</p>} */}
-            {match.messages.length === 0 ? <p>No messages yet! Start a conversation!</p> : null}
+            {match.messages.length === 0 && openMessage ? <p>No messages yet! Start a conversation!</p> : null}
+            <div className='chat'>
+            <div className="card text-dark bg-light mb-3" style={{width: "18rem"}} >
             {openMessage ? messageDisplay : null}
             {openMessage ? messageBox : null}
-            <button onClick={()=>setOpenMessage(!openMessage)}>{openMessage ? "Close Messages" : "Open Messages"}</button>
-            {unmatchButton ? <button onClick={() => setUnmatchButton(false)}>Unmatch</button> : null}
-            {unmatchButton ? null : <button onClick={() => handleUnmatch()}>Confirm Unmatch?</button>}
+            </div>
+            </div>
+            <button type="button" className="btn btn-outline-secondary" onClick={()=>setOpenMessage(!openMessage)}>{openMessage ? "Close Messages" : "Open Messages"}</button>
+            {unmatchButton ? <button className="btn btn-outline-secondary" onClick={() => setUnmatchButton(false)}>Unmatch</button> : null}
+            {unmatchButton ? null : <button type="button" className="btn btn-outline-danger" onClick={() => handleUnmatch()}>Confirm Unmatch?</button>}
             </div> : null
             }
             

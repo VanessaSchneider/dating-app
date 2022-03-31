@@ -50,22 +50,29 @@ function Profile( { currentProfile, user, profiles, setProfiles, handleDeleteUse
     const noMoreProfiles = <h1>Nobody left to swipe!</h1>
     // TODO add BIO and rest of attr section after Age. 
     return(
-        <div id="profile_card">
+     
+      <div className="position-relative m-4">
+      <div id="profileCard" className="card" style={{width: "18rem"}}>
+        <img className="card-img-top" src={randomProfile&&randomProfile.photo}></img>
+        <div class="card-body">
             <h2>{randomProfile ? 
             <div>
-            <p>{randomProfile.name}</p>
-            <p>{randomProfile.age}</p>
-            <img width="200px" src={randomProfile.photo}></img>
-            <p>{randomProfile.bio}</p>
+            <h4 className="card-title">{randomProfile.name}</h4>
+            <h5 className="card-subtitle mb-2 text-muted">{randomProfile.age}</h5>
+            <h6 className="card-subtitle mb-2 text-muted">{randomProfile.location}</h6>
+            <h6 className="card-text">{randomProfile.bio}</h6>
             </div>
             : null}
             </h2>
             {currentProfile.length === 0 ? null : <div>
-            <button onClick={()=>likeProfile(randomProfile)}>Like</button>
-            <button onClick={()=>dislikeProfile(randomProfile)}>Dislike</button>
+            <button type="button" className="btn btn-outline-secondary" onClick={()=>dislikeProfile(randomProfile)}>Dislike</button>
+            <button type="button" className="btn btn-outline-success" onClick={()=>likeProfile(randomProfile)}>Like</button>
             </div>}
             {currentProfile.length === 0 ? noMoreProfiles : null}
         </div>
+        </div>
+        </div>
+       
     )
 }
 

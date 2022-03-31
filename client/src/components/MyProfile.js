@@ -19,18 +19,21 @@ function MyProfile({ user, handleDeleteProfile, setUser }){
     
 
     return(
-        <div>
+        <div className="position-absolute top-50 start-50 translate-middle">
             {user ?
-        <div id="my_profile_card">
-            <h1>My Profile</h1>
-            <h3>Name: {user.name}</h3>
-            <h3>Age: {user.age}</h3>
-            <h3>Location: {user.location}</h3>
-            <h3>Email: {user.email}</h3>
-            <h3>Bio: {user.bio}</h3>
-            <img width="200px" src={user.photo}/>
-            { deleteButton ? null : <button onClick={()=>deleteProfileHandler()}> Confirm Delete Profile? </button>}
-            { deleteButton? <button onClick={()=>setDeleteButton(false)}>Delete Profile</button> : null }
+        <div className="card" style={{width: "20rem"}}>
+            <div className="card-header"><h3>My Profile</h3></div>
+            <img style={{width: "10rem"}} src={user.photo}/>
+            <ul className="list-group list-group-flush">
+            <h4 className="list-group-item">Name: {user.name}</h4>
+            <h4 className="list-group-item">Age: {user.age}</h4>
+            <h4 className="list-group-item">Location: {user.location}</h4>
+            <h4 className="list-group-item">Email: {user.email}</h4>
+            <h4 className="list-group-item">Bio: {user.bio}</h4>
+            </ul>
+            
+            { deleteButton ? null : <button type="button" className="btn btn-outline-danger" style={{width: "10rem"}} onClick={()=>deleteProfileHandler()}> Confirm Delete Profile? </button>}
+            { deleteButton? <button className="btn btn-outline-secondary" style={{width: "10rem"}}onClick={()=>setDeleteButton(false)}>Delete Profile</button> : null }
         </div>
          : null }
         </div>

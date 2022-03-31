@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :matches, through: :likes
   has_many :chats
   has_many :conversations, through: :chats
-  has_many :messages
+  has_many :messages, dependent: :destroy
   has_secure_password
 
   validates :username, presence: true, uniqueness: true

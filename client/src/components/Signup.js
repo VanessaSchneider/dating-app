@@ -41,7 +41,17 @@ function Signup({ login }) {
           }
           else{
         setSignup(false);
+        setUsername('')
+        setPassword("")
+        setPasswordConfirmation("")
+        setName("")
+        setAge("")
+        setEmail("")
+        setLocation("")
+        setPhoto("")
+        setBio("")
         alert("Profile Successfully Created! Please Log In.")
+
           }
         }
         )
@@ -50,16 +60,37 @@ function Signup({ login }) {
     const signupBox = (
       <div>
           <form onSubmit={handleSignup}>
+            <div className="mb-3">
               <input type ="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="username"/>
+              </div>
+              <div className="mb-3">
               <input type ="text"  value={password} onChange={(e) => setPassword(e.target.value)} placeholder="password"/>
+              </div>
+              <div className="mb-3">
               <input type ="text"  value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} placeholder="password confirmation"/>
+              </div>
+              <div className="mb-3">
               <input type ="text"  value={name} onChange={(e) => setName(e.target.value)} placeholder="name"/>
+              </div>
+              <div className="mb-3">
               <input type ="text"  value={age} onChange={(e) => setAge(e.target.value)} placeholder="age"/>
+              </div>
+              <div className="mb-3">
               <input type ="text"  value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email"/>
+              </div>
+              <div className="mb-3">
               <input type ="text"  value={location} onChange={(e) => setLocation(e.target.value)} placeholder="location"/>
+              </div>
+              <div className="mb-3">
               <input type ="text"  value={photo} onChange={(e) => setPhoto(e.target.value)} placeholder="photo"/>
+              </div>
+              <div className="mb-3">
               <input type ="text"  value={bio} onChange={(e) => setBio(e.target.value)} placeholder="bio"/>
-              <input type = "submit"></input>
+              </div>
+              <div className="mb-3">
+              <input type = "submit" className="btn btn-outline-light"></input>
+              </div>
+           
           </form>
       </div>
     )
@@ -67,7 +98,7 @@ function Signup({ login }) {
 return (
   <div>
       <nav>
-          <button onClick ={() => setSignup(!signup)}>Signup</button>
+          <button type="button" className="btn btn-outline-light" onClick ={() => setSignup(!signup)}>Signup</button>
           {signup ? signupBox : null}
       </nav>
   </div>
