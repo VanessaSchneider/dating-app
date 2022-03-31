@@ -92,10 +92,11 @@ const welcome = (user ? `Hi ${user.name}! Ready to find love?` : "Login to Start
        </nav> 
         </div>
        </div>
-       <div>
       <Switch>
       <Route exact path="/">
+        <div style={{width: "30rem"}}>
       <h1 className="welcomeBanner">{welcome}</h1>
+      </div>
       {(user && profiles) ? <SwipePage getMatches={getMatches} setMatches={setMatches} setUser={setUser} handleDeleteUser={handleDeleteUser} profiles={profiles} setProfiles={setProfiles} user={user}/> : null}
       </Route>
       <Route exact path="/matches">
@@ -105,7 +106,6 @@ const welcome = (user ? `Hi ${user.name}! Ready to find love?` : "Login to Start
         <MyProfile user={user} setUser={setUser} handleDeleteProfile={handleDeleteProfile} />
       </Route>
       </Switch>
-      </div>
     </div>
   );
 }

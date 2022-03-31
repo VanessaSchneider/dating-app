@@ -5,11 +5,13 @@ function MatchCard({ user, match, profiles, setMatches, matches, setProfiles }){
     const [message, setMessage] = useState("")
     const [openMessage, setOpenMessage]=useState(false)
     const [messageList, setMessageList]=useState(match.messages)
-
+    console.log(match)
     useEffect(() => {
         fetch("/users")
       .then((res) => res.json())
-      .then((data) => setProfiles(data))}, 
+      .then((data) => setProfiles(data)) 
+      
+    },
       [])
 
     let filteredProfiles = []
@@ -62,30 +64,17 @@ function MatchCard({ user, match, profiles, setMatches, matches, setProfiles }){
                     </div>
                   )
 
-                //   function Matcher()
-                //    {
-                //     fetch("/messages").then((res) => res.json())
-                //     .then((data) => setMessageList(data))
-                //     console.log("messageList", messageList)}
-                      
-                // useEffect(()=>{
-                //         Matcher()
-                //         const interval=setInterval(()=>{
-                //           Matcher()
-                //          },2000)
-                //          return()=>clearInterval(interval)
-                //     },[])
-
                   const messageDisplay = messageList.map((m)=> <p key={m.id}>{m.user_id === user.id ? "me" : myMatch&&myMatch.name}: {m.message}</p>)
 
     return(
         
-        <div className="card text-center" style={{width: "50rem"}}>
+        <div className="card text-center" style={{width: "90rem"}}>
             {myMatch ?
             <div>
             <h3 className="card-header">You matched with {myMatch.name}!</h3>
             {/* <h3>Age: {myMatch.age}</h3> */}
             {openMessage ? <img alt="" id="profile_photo" width="200px" src={myMatch.photo}></img> : null}
+            <br></br>
             {/* {match.messages? messageDisplay : <p>Start a conversation!</p>} */}
             {match.messages.length === 0 && openMessage ? <p>No messages yet! Start a conversation!</p> : null}
             <div className='chat'>
@@ -99,7 +88,7 @@ function MatchCard({ user, match, profiles, setMatches, matches, setProfiles }){
             {unmatchButton ? null : <button type="button" className="btn btn-outline-danger" onClick={() => handleUnmatch()}>Confirm Unmatch?</button>}
             </div> : null
             }
-            
+            <br></br>
         </div>
     )
 }

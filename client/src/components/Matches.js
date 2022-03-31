@@ -1,4 +1,4 @@
-import { useEffect} from "react";
+import { useEffect } from "react";
 import MatchCard from "./MatchCard";
 
 function Matches({ user, setUser, matches, setMatches, profiles, setProfiles }) {
@@ -17,20 +17,27 @@ function Matches({ user, setUser, matches, setMatches, profiles, setProfiles }) 
 .then((data) => setMatches(data))}, 
 [])
 
-
-    // useEffect(() => {
-    //   setTimeout(() => {
-    //     fetch("/getMatches")
-    //         .then((res) => res.json())
-    //         .then((data) => setMatches(data))},
-    //      1000);
-    //     }, []);
+        // function Matcher()
+        //            {
+        //             fetch("/getMatches")
+        //             .then((res) => res.json())
+        //             .then((data) => setMatches(data))
+        //           }
+                      
+        //         useEffect(()=>{
+        //                 Matcher()
+        //                 const interval=setInterval(()=>{
+        //                   Matcher()
+        //                  },4000)
+                           
+        //                  return()=>clearInterval(interval)
+        //             },[])
 
   let matchCards = []
   
   if (matches.length !== 0 && user){
   matchCards = matches.map((m) => <MatchCard setProfiles={setProfiles} setMatches={setMatches} matches={matches} user={user} profiles={profiles} key={m.id} match={m}/>)
-  }
+}
  
 
     return(
@@ -39,6 +46,7 @@ function Matches({ user, setUser, matches, setMatches, profiles, setProfiles }) 
             {/* {user && matches ? <h3>You have {matches.length} match(es).</h3> : null} */}
             {matches.length === 0 ? <h3>No Matches Yet!</h3> : null }
             {matchCards}
+            <br/>
         </div>
     )
 }
