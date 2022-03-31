@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  resources :conversations
+  resources :messages
+  resources :chats
   resources :likes, only: [:create, :index, :show]
   resources :matches, only: [:index, :show, :destroy]
   resources :users
