@@ -62,6 +62,20 @@ function MatchCard({ user, match, profiles, setMatches, matches, setProfiles }){
                     </div>
                   )
 
+                //   function Matcher()
+                //    {
+                //     fetch("/messages").then((res) => res.json())
+                //     .then((data) => setMessageList(data))
+                //     console.log("messageList", messageList)}
+                      
+                // useEffect(()=>{
+                //         Matcher()
+                //         const interval=setInterval(()=>{
+                //           Matcher()
+                //          },2000)
+                //          return()=>clearInterval(interval)
+                //     },[])
+
                   const messageDisplay = messageList.map((m)=> <p key={m.id}>{m.user_id === user.id ? "me" : myMatch&&myMatch.name}: {m.message}</p>)
 
     return(
