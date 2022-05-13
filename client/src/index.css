@@ -5,10 +5,19 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #c5e6d4;
+  background-color: white;
   justify-content: center;
   /* color:#ededed; */
   
+button{
+  background-color: white;
+}
+
+.clear{
+  background-color: transparent;
+  color:transparent;
+}
+
 }
 
 #profile_card{
@@ -19,12 +28,12 @@ body {
   align-content: center;
   text-align: center;
   width: 200 px;
-  background-color: #c5e6d4;
+  background-color: white;
 }
 
 #match_card{
   border: 2px solid black;
-  background-color: #90cfac;
+  background-color: white;
   padding: 50 px;
   margin-left: default;
   margin-right: default;
@@ -41,7 +50,7 @@ body {
   align-content: center;
   text-align: center;
   width: 200 px;
-  background-color: #eef8f2;
+  background-color: white;
   justify-content: center;
 }
 
@@ -67,9 +76,29 @@ body {
   padding: 20px;
 }
 .welcomeBanner{
-  position: relative;
-  margin-top: 20%;
-  left: 122%;
+  margin-top: 10%;
+  margin-left: 40%;
+  background: linear-gradient(#58adff, #f197e6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bolder;
+  font-size: 60px;
+
+}
+
+.welcomeBanner2{
+  margin-left: 40%;
+  background: linear-gradient(#58adff, #f197e6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bolder;
+  font-size: 60px;
+
+}
+
+.welcomeBanner3{
+  margin-top: 6%;
+  margin-left: 40%;
   background: linear-gradient(#58adff, #f197e6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -82,13 +111,13 @@ body {
   position: relative;
   left: 570px;
   justify-content: center;
-  background-color: #eef8f2;
+  background-color: white;
 }
 .chat{
   position: relative;
   left: 570px;
   justify-content: center;
-  background-color: #eef8f2;
+  background-color: white;
 }
 
 .match-container{
@@ -107,6 +136,9 @@ body {
   position: relative;
   left: 600px;
   justify-content: center;
-  background-color: #eef8f2;
+  background-color: white;
 }
 
+.nobody{background-color: transparent;
+font-size: 25px;
+}
