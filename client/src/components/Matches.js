@@ -41,10 +41,12 @@ function Matches({ user, setUser, matches, setMatches, profiles, setProfiles }) 
  
 
     return(
+      <div>
       <div className="match-container">
             {/* <h2>This is your Matches Page</h2> */}
             {/* {user && matches ? <h3>You have {matches.length} match(es).</h3> : null} */}
             {matches.length === 0 ? <h3>No Matches Yet!</h3> : null }
+            </div>
             {matchCards}
             <br/>
         </div>

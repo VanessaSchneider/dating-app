@@ -5,8 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #4a4a57;
+  background-color: #c5e6d4;
+  justify-content: center;
   /* color:#ededed; */
+  
 }
 
 #profile_card{
@@ -17,11 +19,12 @@ body {
   align-content: center;
   text-align: center;
   width: 200 px;
+  background-color: #c5e6d4;
 }
 
 #match_card{
   border: 2px solid black;
-  background-color: aliceblue;
+  background-color: #90cfac;
   padding: 50 px;
   margin-left: default;
   margin-right: default;
@@ -38,6 +41,8 @@ body {
   align-content: center;
   text-align: center;
   width: 200 px;
+  background-color: #eef8f2;
+  justify-content: center;
 }
 
 #swipe-card{
@@ -51,7 +56,7 @@ body {
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
   left: 0;
-  background-color: #3d3d49; /* Black */
+  background-color: #ac90cf; /* Black */
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 20px;
   margin-right: 50px;
@@ -63,26 +68,45 @@ body {
 }
 .welcomeBanner{
   position: relative;
-  left: 500px;
+  margin-top: 20%;
+  left: 122%;
+  background: linear-gradient(#58adff, #f197e6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bolder;
+  font-size: 60px;
+
 }
 
 #profileCard{
   position: relative;
   left: 570px;
+  justify-content: center;
+  background-color: #eef8f2;
 }
 .chat{
   position: relative;
   left: 570px;
+  justify-content: center;
+  background-color: #eef8f2;
 }
 
 .match-container{
   position: relative;
   top: 50px;
-  left: 370px;
+  left: 45%;;
+  justify-content: center;
+  background: linear-gradient(#58adff, #f197e6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bolder;
+  font-size: 60px;
 }
 
 #myProfileCard{
   position: relative;
   left: 600px;
+  justify-content: center;
+  background-color: #eef8f2;
 }
 

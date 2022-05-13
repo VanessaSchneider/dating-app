@@ -78,7 +78,7 @@ function App() {
     .then(()=>handleReroute())
   }
 
-const welcome = (user ? `Hi ${user.name}! Ready to find love?` : "Login to Start Swiping")
+const welcome = (user ? `Hi ${user.name}! Ready to find love?` : "Love is Waiting Login to Begin")
 
   return (
     
