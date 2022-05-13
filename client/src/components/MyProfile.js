@@ -84,37 +84,37 @@ function MyProfile({ user, handleDeleteProfile, setUser }){
       const editBox = (
         <div>
             <form onSubmit={(e)=>handleEdit(e)}>
-              <div className="mb-3">
+              <div className="card-text-center">
                 <label>Username</label>
                 <br></br>
                 <input type ="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="username"/>
                 </div>
                 <label>Name</label>
                 <br></br>
-                <div className="mb-3">
+                <div className="card-text-center">
                 <input type ="text"  value={name} onChange={(e) => setName(e.target.value)} placeholder="name"/>
                 </div>
                 <label>Age</label>
                 <br></br>
-                <div className="mb-3">
+                <div className="card-text-center">
                 <input type ="text"  value={age} onChange={(e) => setAge(e.target.value)} placeholder="age"/>
                 </div>
                 <label>Location</label>
                 <br></br>
-                <div className="mb-3">
+                <div className="card-text-center">
                 <input type ="text"  value={location} onChange={(e) => setLocation(e.target.value)} placeholder="location"/>
                 </div>
                 <label>Photo</label>
                 <br></br>
-                <div className="mb-3">
+                <div className="card-text-center">
                 <input type ="text"  value={photo} onChange={(e) => setPhoto(e.target.value)} placeholder="photo"/>
                 </div>
                 <label>Bio</label>
                 <br></br>
-                <div className="mb-3">
+                <div className="card-text-center">
                 <input type ="text"  value={bio} onChange={(e) => setBio(e.target.value)} placeholder="bio"/>
                 </div>
-                <div className="mb-3">
+                <div className="card-text-center">
                 <input type = "submit" className="btn btn-outline-light"></input>
                 </div>
              

@@ -70,8 +70,8 @@ function MatchCard({ user, match, profiles, setMatches, matches, setProfiles }){
         
         <div className="card text-center" style={{width: "90rem"}}>
             {myMatch ?
-            <div>
-            <h3 className="card-header">You matched with {myMatch.name}!</h3>
+            <div className="card-header">
+            <h3>You matched with {myMatch.name}!</h3>
             {/* <h3>Age: {myMatch.age}</h3> */}
             {openMessage ? <img alt="" id="profile_photo" width="200px" src={myMatch.photo}></img> : null}
             <br></br>

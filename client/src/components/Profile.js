@@ -44,24 +44,24 @@ function Profile( { currentProfile, user, profiles, setProfiles, handleDeleteUse
               .then((data)=>console.log(data))
         
     }
-    const noMoreProfiles = <h1>Nobody left to swipe!</h1>
+    const noMoreProfiles = <h4>Nobody left to swipe!</h4>
     // TODO add BIO and rest of attr section after Age. 
     return(
      
-      <div className="position-relative m-4">
+      <div>
       <div id="profileCard" className="card" style={{width: "18rem"}}>
         <img alt="" className="card-img-top" src={randomProfile&&randomProfile.photo}></img>
-        <div className="card-body">
+        <div className="card-text-center">
             <h2>{randomProfile ? 
-            <div>
-            <h4 className="card-title">{randomProfile.name}</h4>
-            <h5 className="card-subtitle mb-2 text-muted">{randomProfile.age}</h5>
-            <h6 className="card-subtitle mb-2 text-muted">{randomProfile.location}</h6>
-            <h6 className="card-text">{randomProfile.bio}</h6>
+            <div className ="card-text-center">
+            <h4 className="card-text-center2">{randomProfile.name}</h4>
+            <h5 className="card-text-center">{randomProfile.age}</h5>
+            <h6 className="card-text-center">{randomProfile.location}</h6>
+            <h6 className="card-text-center2">{randomProfile.bio}</h6>
             </div>
             : null}
             </h2>
-            {currentProfile.length === 0 ? null : <div>
+            {currentProfile.length === 0 ? null : <div className = "card-text-center3">
             <button type="button" className="btn btn-outline-secondary" onClick={()=>dislikeProfile(randomProfile)}>Dislike</button>
             <button type="button" className="btn btn-outline-success" onClick={()=>likeProfile(randomProfile)}>Like</button>
             </div>}

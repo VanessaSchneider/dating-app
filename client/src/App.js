@@ -78,7 +78,6 @@ function App() {
     .then(()=>handleReroute())
   }
 
-const welcome = (user ? `Hi ${user.name}! Ready to find love?` : "Love is Waiting Login to Begin")
 
   return (
     
@@ -94,10 +93,8 @@ const welcome = (user ? `Hi ${user.name}! Ready to find love?` : "Love is Waitin
        </div>
       <Switch>
       <Route exact path="/">
-        <div style={{width: "30rem"}}>
-      <h1 className="welcomeBanner">{welcome}</h1>
-      </div>
-      {(user && profiles) ? <SwipePage getMatches={getMatches} setMatches={setMatches} setUser={setUser} handleDeleteUser={handleDeleteUser} profiles={profiles} setProfiles={setProfiles} user={user}/> : null}
+          {user? <div className="welcomeBanner2"> <div>Hi {user.name}!</div><div> Ready to find love?</div></div> :<div className="welcomeBanner"> <div><div>Love is Waiting</div><div> Login to Begin</div></div></div>}
+      {user && profiles ? <SwipePage getMatches={getMatches} setMatches={setMatches} setUser={setUser} handleDeleteUser={handleDeleteUser} profiles={profiles} setProfiles={setProfiles} user={user}/> : null}
       </Route>
       <Route exact path="/matches">
       <Matches matches={matches} setMatches={setMatches} user={user} setUser={setUser} profiles={profiles} setProfiles={setProfiles}/>
