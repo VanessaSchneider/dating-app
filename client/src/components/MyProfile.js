@@ -115,7 +115,7 @@ function MyProfile({ user, handleDeleteProfile, setUser }){
                 <input type ="text"  value={bio} onChange={(e) => setBio(e.target.value)} placeholder="bio"/>
                 </div>
                 <div className="mb-3">
-                <input type = "submit" className="btn btn-outline-light"></input>
+                <input type = "submit"  className="btn btn-outline-secondary" style={{width: "10rem"}}></input>
                 </div>
              
             </form>
@@ -143,7 +143,8 @@ function MyProfile({ user, handleDeleteProfile, setUser }){
         </div>
          : null }
          {edit ? editBox : null}
-         <button className="btn btn-outline-secondary" onClick={()=>refreshFetch()}>{edit ? "Cancel Edit" : "Edit Profile"}</button>
+         <button  className="btn btn-outline-secondary" style={{width: "10rem"}}
+          onClick={()=>refreshFetch()}>{edit ? "Cancel Edit" : "Edit Profile"}</button>
         </div>
     )
 }
