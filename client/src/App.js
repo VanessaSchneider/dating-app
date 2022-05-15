@@ -94,7 +94,7 @@ function App() {
       <Switch>
       <Route exact path="/">
 
-      {user ? <div><div className="welcomeBanner3"> Hi {user.name}!</div><div className="welcomeBanner2"> Ready to find love?</div></div> : <div><div className="welcomeBanner"> Love is Waiting</div> <div className="welcomeBanner2">Login to Begin</div></div>}
+      {user ? <div><div className="welcomeBanner3"> Hi {user.name}!</div></div> : <div><div className="welcomeBanner"> Love is Waiting</div> <div className="welcomeBanner2">Login to Begin</div></div>}
    
       {(user && profiles) ? <SwipePage getMatches={getMatches} setMatches={setMatches} setUser={setUser} handleDeleteUser={handleDeleteUser} profiles={profiles} setProfiles={setProfiles} user={user}/> : null}
       </Route>
